@@ -1,0 +1,229 @@
+/* Estilo simples, sem bibliotecas prontas, só CSS puro. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2a33;
+}
+
+.pagina {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d7dee3;
+  margin-bottom: 20px;
+}
+
+.topo h1 {
+  font-size: 1.3rem;
+  color: #1c5d7a;
+  margin: 0;
+}
+
+.barra-acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.botao {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid #1c5d7a;
+  background: #fff;
+  color: #1c5d7a;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.botao-principal {
+  background: #1c5d7a;
+  color: #fff;
+}
+
+.botao-perigo {
+  border-color: #b23b3b;
+  color: #b23b3b;
+  background: #fff;
+}
+
+.campo-busca {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #c3cdd4;
+  border-radius: 4px;
+}
+
+.filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filtros select {
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #c3cdd4;
+}
+
+.lista-chamados {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-chamados li {
+  margin-bottom: 8px;
+}
+
+.item-chamado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #d7dee3;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #1f2a33;
+}
+
+.titulo-item {
+  flex: 1;
+}
+
+.selo {
+  font-size: 0.78rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.selo-aberto { background: #fde6cf; color: #8a4b08; }
+.selo-em-andamento { background: #fff3b0; color: #7a6400; }
+.selo-resolvido { background: #d4f0d4; color: #1c6b1c; }
+
+.selo-prioridade-alta { background: #f8d2d2; color: #8a1c1c; }
+.selo-prioridade-media { background: #e4e4e4; color: #444; }
+.selo-prioridade-baixa { background: #dbe9f5; color: #1c4f7a; }
+
+.mensagem {
+  padding: 14px;
+  text-align: center;
+  color: #556;
+}
+
+.mensagem.erro {
+  color: #b23b3b;
+}
+
+.link-voltar {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #1c5d7a;
+  text-decoration: none;
+}
+
+.cabecalho-detalhe {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.campos-detalhe {
+  background: #fff;
+  border: 1px solid #d7dee3;
+  border-radius: 4px;
+  padding: 14px 18px;
+}
+
+.campos-detalhe dt {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.campos-detalhe dd {
+  margin: 2px 0 0;
+}
+
+.acoes-detalhe {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.caixa-confirmacao {
+  background: #fff3f3;
+  border: 1px solid #f0c2c2;
+  border-radius: 4px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.caixa-confirmacao .botao {
+  margin-right: 8px;
+}
+
+.formulario-etapa {
+  background: #fff;
+  border: 1px solid #d7dee3;
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin-top: 10px;
+}
+
+.formulario-etapa label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.formulario {
+  background: #fff;
+  border: 1px solid #d7dee3;
+  border-radius: 4px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #445;
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+  padding: 8px;
+  border: 1px solid #c3cdd4;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.formulario textarea {
+  min-height: 80px;
+}
+.selo-prioridade-média { background: #e4e4e4; color: #444; }
