@@ -4,4 +4,4 @@ Front-end feito em React + Vite que consome a API de chamados de manutenção.
 
 ## Tela inicial
 
-![Tela inicial com a lista de chamados](./print\tela-inicial.png)
+![Tela inicial com a lista de chamados](./print\telainicial.png)
