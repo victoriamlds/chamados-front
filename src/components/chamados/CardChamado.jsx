@@ -1,6 +1,4 @@
 // Componente CardChamado: UM item da lista de chamados.
-// Ao clicar nele, vai para a tela de detalhe.
-// Prop: chamado -> o objeto com os dados do chamado (id, titulo, status...)
 
 // Link troca de tela sem recarregar a página.
 import { Link } from "react-router-dom"
@@ -9,7 +7,7 @@ import Selo from "./Selo.jsx"
 
 function CardChamado({ chamado }) {
   return (
-    // to: para onde o link leva. Ex: /chamado/5
+    
     <Link to={"/chamado/" + chamado.id} className="item-chamado">
       <span className="titulo-item">{chamado.titulo}</span>
       <Selo valor={chamado.status} tipo="status" />

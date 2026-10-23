@@ -1,6 +1,3 @@
-// Este é o primeiro arquivo que roda quando o site abre. Ele "planta" o
-// componente App dentro da página HTML e ativa o sistema de rotas,
-// que permite ter várias telas: "/", "/chamado/5", "/novo", etc.
 
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"

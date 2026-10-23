@@ -1,8 +1,7 @@
-// Formulário usado em DUAS rotas: "/novo" (abrir) e "/editar/:id" (editar).
-// A diferença é só se existe "id" na URL ou não.
+
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-// Funções do arquivo central da API que esta tela usa.
+
 import {
   buscarChamado,
   criarChamado,
@@ -12,7 +11,6 @@ import {
   listarPrioridades,
 } from "../services/chamadosService.js"
 import mensagemErro from "../utils/mensagemErro.js"
-// Componentes genéricos usados nesta tela.
 import Seletor from "../components/comuns/Seletor.jsx"
 import Mensagem from "../components/comuns/Mensagem.jsx"
 
@@ -23,7 +21,7 @@ function Formulario() {
   // Boolean(id) vira true se existir id (editando) e false se não existir (novo).
   const estaEditando = Boolean(id)
 
-  // ---------- ESTADOS: um para cada campo ----------
+  //ESTADOS: um para cada campo 
   const [titulo, setTitulo] = useState("")
   const [descricao, setDescricao] = useState("")
   const [tipo, setTipo] = useState("")
@@ -42,7 +40,7 @@ function Formulario() {
   // Só começa "carregando" se for edição (precisa buscar os dados do chamado).
   const [carregando, setCarregando] = useState(estaEditando)
 
-  // ---------- CARREGAR AS OPÇÕES DOS SELETORES ----------
+  //CARREGAR AS OPÇÕES DOS SELETORES
   useEffect(() => {
     async function carregarOpcoes() {
       try {
@@ -56,14 +54,13 @@ function Formulario() {
     carregarOpcoes()
   }, [])
 
-  // ---------- SE FOR EDIÇÃO, PREENCHER O FORMULÁRIO ----------
+  //SE FOR EDIÇÃO, PREENCHER O FORMULÁRIO
   useEffect(() => {
     // Em /novo não há nada para buscar.
     if (!estaEditando) return
 
     async function carregarChamado() {
       try {
-        // Função do arquivo central: GET /chamados/{id}.
         const chamado = await buscarChamado(id)
 
         // Resolvido não pode ser editado: avisamos e voltamos para o detalhe.
@@ -73,7 +70,7 @@ function Formulario() {
           return
         }
 
-        // Colocamos nos campos os dados que já existem.
+        // nos campos os dados que já existem.
         setTitulo(chamado.titulo)
         setDescricao(chamado.descricao)
         setTipo(chamado.tipo)
@@ -89,7 +86,7 @@ function Formulario() {
     carregarChamado()
   }, [id])
 
-  // ---------- ENVIAR O FORMULÁRIO ----------
+  // 
   async function enviarFormulario(evento) {
     evento.preventDefault() // impede de recarregar a página
     setErro("")
@@ -107,25 +104,25 @@ function Formulario() {
 
     try {
       if (estaEditando) {
-        // Função do arquivo central: PUT /chamados/{id} (edita).
+        
         await editarChamado(id, dados)
       } else {
-        // Função do arquivo central: POST /chamados (cria).
+       
         await criarChamado(dados)
       }
 
       setSucesso("Chamado salvo com sucesso!")
-      // Espera 1 segundo (1000 ms) para dar tempo de ler a mensagem e volta para a lista.
+      
       setTimeout(() => navegar("/"), 1000)
     } catch (erroRequisicao) {
-      // Mostra o motivo que a API explicou (erro 422, por exemplo).
+      
       setErro(mensagemErro(erroRequisicao, "Não foi possível salvar o chamado."))
     }
   }
 
   if (carregando) return <Mensagem texto="Carregando..." />
 
-  // ---------- TELA ----------
+  // TELA
   return (
     <div>
       <h1>{estaEditando ? "Editar chamado" : "Abrir chamado"}</h1>

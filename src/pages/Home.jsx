@@ -14,7 +14,7 @@ import CardChamado from "../components/chamados/CardChamado.jsx"
 import Mensagem from "../components/comuns/Mensagem.jsx"
 
 function Home() {
-  // ---------- ESTADOS (a "memória" da tela) ----------
+  
   // Lista de chamados que veio da API.
   const [chamados, setChamados] = useState([])
   // Controlam as mensagens de "carregando" e de erro.

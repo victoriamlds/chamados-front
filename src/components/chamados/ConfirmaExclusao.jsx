@@ -1,7 +1,5 @@
 // Componente ConfirmaExclusao: a caixinha "Tem certeza que deseja excluir?".
-// Props:
-//   aoConfirmar -> função chamada quando clicar em "Excluir"
-//   aoCancelar  -> função chamada quando clicar em "Cancelar"
+
 function ConfirmaExclusao({ aoConfirmar, aoCancelar }) {
   return (
     <div className="caixa-confirmacao">

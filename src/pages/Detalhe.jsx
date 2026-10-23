@@ -1,36 +1,31 @@
-// Página de detalhe ("/chamado/:id"): mostra todos os campos do chamado,
-// os botões Editar e Excluir, e a próxima etapa do atendimento.
+// mostra todos os campos do chamado, os botões Editar e Excluir, e a próxima etapa do atendimento.
 import { useEffect, useState } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
-// Funções do arquivo central da API que esta tela usa.
 import { buscarChamado, excluirChamado } from "../services/chamadosService.js"
 import mensagemErro from "../utils/mensagemErro.js"
-// Componentes usados nesta tela.
 import Selo from "../components/chamados/Selo.jsx"
 import ConfirmaExclusao from "../components/chamados/ConfirmaExclusao.jsx"
 import ProximaEtapa from "../components/chamados/ProximaEtapa.jsx"
 import Mensagem from "../components/comuns/Mensagem.jsx"
 
 function Detalhe() {
-  // useParams lê o pedaço variável da URL. Em /chamado/7, id vale "7".
+  
   const { id } = useParams()
-  // useNavigate nos dá uma função para trocar de tela pelo código.
+  
   const navegar = useNavigate()
 
-  // ---------- ESTADOS ----------
+  //ESTADOS
   const [chamado, setChamado] = useState(null) // dados do chamado
   const [carregando, setCarregando] = useState(true)
   const [erro, setErro] = useState("")
-  // true quando a caixa "Tem certeza?" deve aparecer.
-  const [confirmando, setConfirmando] = useState(false)
-  // Mensagem de sucesso/erro depois de uma ação.
+  const [confirmando, setConfirmando] = useState(false)// Mensagem de sucesso/erro depois de uma ação.
   const [mensagemAcao, setMensagemAcao] = useState("")
 
-  // ---------- BUSCAR O CHAMADO ----------
+  //  BUSCAR O CHAMADO
   // Função separada porque também a chamamos depois de iniciar/resolver.
   async function carregarChamado() {
     try {
-      // Função do arquivo central: GET /chamados/{id}.
+      
       const dados = await buscarChamado(id)
       setChamado(dados)
     } catch (erroRequisicao) {
@@ -45,20 +40,20 @@ function Detalhe() {
     carregarChamado()
   }, [id])
 
-  // ---------- EXCLUIR ----------
+  // EXCLUIR
   // Só é chamada quando a pessoa confirma na caixa "Tem certeza?".
   async function confirmarExclusao() {
     try {
-      // Função do arquivo central: DELETE /chamados/{id}.
+     
       await excluirChamado(id)
-      navegar("/") // depois de excluir, volta para a lista
+      navegar("/") 
     } catch (erroRequisicao) {
       setConfirmando(false)
       setMensagemAcao(mensagemErro(erroRequisicao, "Não foi possível excluir."))
     }
   }
 
-  // ---------- TELA ----------
+  // TELA 
   // Enquanto carrega, ou se deu erro, mostramos só a mensagem.
   if (carregando) return <Mensagem texto="Carregando..." />
   if (erro) return <Mensagem texto={erro} erro={true} />
